@@ -1,0 +1,225 @@
+:root {
+    --primary: #1e3c72;
+    --secondary: #2a5298;
+    --accent: #00f2fe;
+    --dark: #2c3e50;
+    --light: #f5f7fa;
+    --success: #2ecc71;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background: var(--light);
+    color: var(--dark);
+}
+
+header {
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.hidden { 
+    display: none !important; 
+}
+
+.tarifas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.tarifa-item {
+    background: #eef2f7;
+    padding: 1rem;
+    border-left: 5px solid var(--accent);
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"], select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--secondary); }
+.btn-success { background: var(--success); color: white; }
+.btn-secondary { background: #7f8c8d; color: white; }
+.btn-danger { background: #e74c3c; color: white; }
+.contenedor-boleto-global {
+    position: relative;
+    width: 100%;
+}
+.contenedor-boleto-global.hidden {
+    display: none !important;
+}
+
+.publicidad-flotante {
+    position: absolute;
+    top: 0;
+    width: 180px;
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.pub-izq { 
+    left: -220px; 
+    background: #eef7f2; 
+    border: 1px solid #bce2cd; 
+}
+.pub-der { 
+    right: -220px; 
+    background: #fff5e6; 
+    border: 1px solid #ffe0b3; 
+}
+
+.pub-tag {
+    color: white;
+    padding: 3px 6px;
+    font-size: 0.65rem;
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+.tag-verde { background: #2ecc71; }
+.tag-naranja { background: #e67e22; }
+
+.btn-active-ad {
+    background: #27ae60 !important;
+    color: white !important;
+}
+
+.ticket-box {
+    border: 3px dashed var(--secondary);
+    background: #fffdf0;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+.ticket-header {
+    font-size: 1.4rem;
+    text-align: center;
+    font-weight: bold;
+    color: var(--secondary);
+    border-bottom: 2px dashed #ccc;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.diploma-box {
+    border: 5px double #b59410;
+    background: #fdfaf2;
+    padding: 2rem;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: 1rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+th { background: #f2f2f2; }
+
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.modal.hidden { display: none !important; }
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 320px;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media print {
+    body { background: white; color: black; }
+    header, button, #section-bienvenida, #section-usuario-auth, #section-registro, #section-encuesta, #section-admin, .ticket-media, .publicidad-flotante, .no-print {
+        display: none !important;
+    }
+    .card { box-shadow: none; padding: 0; }
+    .diploma-box { border: 5px double #000; background: white; }
+}
+
+@media (max-width: 1340px) {
+    .publicidad-flotante { display: none !important; }
+}
+
+@media (max-width: 600px) {
+    header { flex-direction: column; text-align: center; gap: 1rem; }
+    .container { margin: 1rem auto; }
+    .card { padding: 1.2rem; }
+    .tarifas-grid { grid-template-columns: 1fr; }
+    button { width: 100%; box-sizing: border-box; }
+    table { font-size: 0.8rem; }
+    .auth-grid { flex-direction: column; }
+    .auth-grid div { border-right: none !important; padding-right: 0 !important; }
+}
