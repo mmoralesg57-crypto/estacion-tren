@@ -1,288 +1,281 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estación Central de Trenes - Express</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estación Central de Trenes - Express</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVBAR / LOGIN -->
-    <header>
-        <div class="logo">🚄 Estación Central</div>
-        <button id="btn-login-modal">Admin Login</button>
-    </header>
-
-    <main class="container">
+<!-- Aqui seria para el login -->
+<header>
+<div class="logo">🚄 Estación Central</div>
+<button id="btn-login-modal">Admin Login</button>
+</header>
+<main class="container">
         
-        <!-- SECCIÓN DE BIENVENIDA / PRESENTACIÓN -->
-        <section id="section-bienvenida" class="card" style="text-align: center; padding: 3rem 2rem;">
-            <h1>🚄 ¡Bienvenido a Estación Central Express!</h1>
-            <p style="font-size: 1.1rem; color: #555; margin-bottom: 2rem;">Tu portal rápido, seguro y confiable para la gestión de boletos ferroviarios e inter-regionales.</p>
-            <button id="btn-comenzar" class="btn-success" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Iniciar Registro de Viaje</button>
-        </section>
+<!-- aqui seria la seccion de bienvenida --> 
+<section id="section-bienvenida" class="card" style="text-align: center; padding: 3rem 2rem;">
+<h1>🚄 ¡Bienvenido a Estación Central Express!</h1>
+<p style="font-size: 1.1rem; color: #555; margin-bottom: 2rem;">Tu portal rápido, seguro y confiable para la gestión de boletos ferroviarios e inter-regionales.</p>
+<button id="btn-comenzar" class="btn-success" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Iniciar Registro de Viaje</button>
+</section>
 
-        <!-- SECCIÓN: AUTENTICACIÓN / REGISTRO DE PASAJEROS OBLIGATORIO -->
-        <section id="section-usuario-auth" class="card hidden">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <h2>🔐 Acceso de Pasajeros Obligatorio</h2>
-                <button id="btn-volver-auth-inicio" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">← Volver</button>
-            </div>
+<!-- Aqui seria el registro de usuario para los pasajeros -->
+<section id="section-usuario-auth" class="card hidden">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+<h2>🔐 Acceso de Pasajeros Obligatorio</h2>
+<button id="btn-volver-auth-inicio" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">← Volver</button>
+</div>
+<div class="auth-grid" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+    
+<!-- En la izquierda para crear una cuenta -->
+<div style="flex: 1; min-width: 280px; border-right: 1px solid #ddd; padding-right: 2rem;">
+<h3>Crear Cuenta Nueva</h3>
+<form id="form-crear-usuario" style="margin-top: 1rem;">
+<div class="form-group">
+<label>Nombre Completo:</label>
+<input type="text" id="reg-nombre" required placeholder="Ej: Mario Morales">
+</div>
+<div class="form-group">
+<label>Correo Electrónico:</label>
+<input type="text" id="reg-correo" required placeholder="mario@gmail.com">
+</div>
+<div class="form-group">
+<label>Número de Teléfono:</label>
+<input type="text" id="reg-telefono" required placeholder="Ej: 5555-1234">
+</div>
+<button type="submit" class="btn-success" style="width: 100%;">Registrar Nuevo Usuario</button>
+</form>
+</div>
 
-            <div class="auth-grid" style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                <!-- Bloque Izquierdo: Crear Cuenta -->
-                <div style="flex: 1; min-width: 280px; border-right: 1px solid #ddd; padding-right: 2rem;">
-                    <h3>Crear Cuenta Nueva</h3>
-                    <form id="form-crear-usuario" style="margin-top: 1rem;">
-                        <div class="form-group">
-                            <label>Nombre Completo:</label>
-                            <input type="text" id="reg-nombre" required placeholder="Ej: Mario Morales">
-                        </div>
-                        <div class="form-group">
-                            <label>Correo Electrónico:</label>
-                            <input type="text" id="reg-correo" required placeholder="mario@gmail.com">
-                        </div>
-                        <div class="form-group">
-                            <label>Número de Teléfono:</label>
-                            <input type="text" id="reg-telefono" required placeholder="Ej: 5555-1234">
-                        </div>
-                        <button type="submit" class="btn-success" style="width: 100%;">Registrar Nuevo Usuario</button>
-                    </form>
-                </div>
+<!-- en la derecha es para ingresar -->
+<div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: flex-start;">
+<h3>¿Ya eres cliente registrado?</h3>
+<p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 1.5rem 0;">Ingresa el correo electrónico con el que diste de alta tu cuenta para validar tu acceso al itinerario.</p>
+<form id="form-ingreso-usuario">
+<div class="form-group">
+<label>Correo Electrónico:</label>
+<input type="text" id="login-correo-user" required placeholder="mario@gmail.com">
+</div>
+<button type="submit" class="btn-primary" style="width: 100%;">Validar Credenciales e Ingresar</button>
+</form>
+</div>
+</div>
+</section>
 
-                <!-- Bloque Derecho: Ingresar -->
-                <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; justify-content: flex-start;">
-                    <h3>¿Ya eres cliente registrado?</h3>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 1.5rem 0;">Ingresa el correo electrónico con el que diste de alta tu cuenta para validar tu acceso al itinerario.</p>
-                    <form id="form-ingreso-usuario">
-                        <div class="form-group">
-                            <label>Correo Electrónico:</label>
-                            <input type="text" id="login-correo-user" required placeholder="mario@gmail.com">
-                        </div>
-                        <button type="submit" class="btn-primary" style="width: 100%;">Validar Credenciales e Ingresar</button>
-                    </form>
-                </div>
-            </div>
-        </section>
+<!-- seccion 1: las tarifas y registro para los viajeros -->
+<section id="section-registro" class="card hidden">
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+<h2>Tarifas y Registro de Viajeros</h2>
+<button id="btn-volver-bienvenida" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">← Volver al Inicio</button>
+</div>
+<div class="tarifas-grid">
+<div class="tarifa-item"><strong>Ruta Local:</strong> Q20.00</div>
+<div class="tarifa-item"><strong>Ruta Inter-regional:</strong> Q30.00</div>
+<div class="tarifa-item"><strong>Ruta Express Nocturna:</strong> Q50.00</div>
+</div>
+<form id="form-viajero">
+<h3>Ingreso de Datos Personales</h3>
+<div class="form-group">
+<label>Nombre Completo:</label>
+<input type="text" id="nombre" required>
+</div>
+<div class="form-group">
+<label>Documento de Identidad:</label>
+<input type="text" id="documento" required>
+</div>
+<div class="form-group">
+<label>Seleccione su Ruta:</label>
+<select id="ruta" required>
+<option value="20.00">Ruta Local - Estaciones Cercanas (Q20.00)</option>
+<option value="30.00">Ruta Inter-regional - Conexión Nacional (Q30.00)</option>
+<option value="50.00">Ruta Express Nocturna - Directo (Q50.00)</option>
+</select>
+</div>
+<button type="submit" class="btn-primary">Registrar y Generar Boleto</button>
+</form>
+<div style="margin-top: 2rem; text-align: center;">
+<img src="tren.gif" alt="Animación del Tren" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
+</div>
+</section>
 
-        <!-- SECCIÓN 1: TARIFAS Y REGISTRO DE VIAJEROS -->
-        <section id="section-registro" class="card hidden">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-                <h2>Tarifas y Registro de Viajeros</h2>
-                <button id="btn-volver-bienvenida" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">← Volver al Inicio</button>
-            </div>
-            <div class="tarifas-grid">
-                <div class="tarifa-item"><strong>Ruta Local:</strong> Q20.00</div>
-                <div class="tarifa-item"><strong>Ruta Inter-regional:</strong> Q30.00</div>
-                <div class="tarifa-item"><strong>Ruta Express Nocturna:</strong> Q50.00</div>
-            </div>
-
-            <form id="form-viajero">
-                <h3>Ingreso de Datos Personales</h3>
-                <div class="form-group">
-                    <label>Nombre Completo:</label>
-                    <input type="text" id="nombre" required>
-                </div>
-                <div class="form-group">
-                    <label>Documento de Identidad:</label>
-                    <input type="text" id="documento" required>
-                </div>
-                <div class="form-group">
-                    <label>Seleccione su Ruta:</label>
-                    <select id="ruta" required>
-                        <option value="20.00">Ruta Local - Estaciones Cercanas (Q20.00)</option>
-                        <option value="30.00">Ruta Inter-regional - Conexión Nacional (Q30.00)</option>
-                        <option value="50.00">Ruta Express Nocturna - Directo (Q50.00)</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary">Registrar y Generar Boleto</button>
-            </form>
+<!-- seccion 2: el boleto digital, tambien con anuncios interactivos -->
+<div class="contenedor-boleto-global hidden">
             
-            <div style="margin-top: 2rem; text-align: center;">
-                <img src="tren.gif" alt="Animación del Tren" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" onerror="this.style.display='none'">
-            </div>
-        </section>
-        <!-- SECCIÓN 2: EL BOLETO DIGITAL CON ANUNCIOS INTERACTIVOS -->
-        <div class="contenedor-boleto-global hidden">
-            
-            <!-- Anuncio Flotante Izquierdo -->
-            <div class="publicidad-flotante pub-izq">
-                <span class="pub-tag tag-verde">ANUNCIO</span>
-                <h4>☕ Vagón Cafetería</h4>
-                <p>¡Obtén un combo de capuchino y postre a bordo por solo <strong>Q15.50</strong>!</p>
-                <img src="cafeteria.png" alt="Cafetería" style="width: 100%; height: auto; margin: 0.8rem 0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: block;" onerror="this.src='https://placehold.co'">
-                <button id="btn-add-cafe" class="btn-primary" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">🛒 Agregar (+Q15.50)</button>
-            </div>
+<!-- Anuncio Izquierdo -->
+<div class="publicidad-flotante pub-izq">
+<span class="pub-tag tag-verde">ANUNCIO</span>
+<h4>☕ Vagón Cafetería</h4>
+<p>¡Obtén un combo de capuchino y postre a bordo por solo <strong>Q15.50</strong>!</p>
+<img src="cafeteria.png" alt="Cafetería" style="width: 100%; height: auto; margin: 0.8rem 0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: block;" onerror="this.src='https://placehold.co'">
+<button id="btn-add-cafe" class="btn-primary" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">🛒 Agregar (+Q15.50)</button>
+</div>
 
-            <!-- TARJETA DEL BOLETO -->
-            <section id="section-boleto" class="card">
-                <h2>🎟️ Su Boleto Digital</h2>
-                
-                <div id="boleto-impresion" class="ticket-box">
-                    <div class="ticket-header">🚨 TREN EXPRESS OFICIAL</div>
-                    <p><strong>Pasajero:</strong> <span id="lbl-nombre"></span></p>
-                    <p><strong>ID:</strong> <span id="lbl-documento"></span></p>
-                    <p><strong>Servicio:</strong> <span id="lbl-ruta"></span></p>
-                    <p><strong>Hora de Salida:</strong> <span id="lbl-salida"></span></p>
-                    <p><strong>Hora de Llegada:</strong> <span id="lbl-llegada"></span></p>
-                    
-                    <div class="ticket-media">
-                        <p>💡 Consulta los horarios oficiales antes de viajar:</p>
-                        <a href="https://thetrainline.com" target="_blank" style="color: #2a5298; font-weight: bold; text-decoration: underline;">📋 Ver Guía Oficial de Estaciones Ferroviarias</a>
-                        <br><br>
-                        <video width="100%" height="240" controls style="border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); object-fit: cover;">
-                            <source src="video_tren.mp4" type="video/mp4">
-                            Tu navegador no soporta la reproducción de este video de forma local.
-                        </video>
-                    </div>
-                </div>
-                
-                <button id="btn-ir-encuesta" class="btn-success" style="margin-top: 1.5rem; width: 100%;">Continuar a Evaluación de Satisfacción</button>
-            </section>
+<!-- la tarjeta para el boleto -->
+<section id="section-boleto" class="card">
+<h2>🎟️ Su Boleto Digital</h2>            
+<div id="boleto-impresion" class="ticket-box">
+<div class="ticket-header">🚨 TREN EXPRESS OFICIAL</div>
+<p><strong>Pasajero:</strong> <span id="lbl-nombre"></span></p>
+<p><strong>ID:</strong> <span id="lbl-documento"></span></p>
+<p><strong>Servicio:</strong> <span id="lbl-ruta"></span></p>
+<p><strong>Hora de Salida:</strong> <span id="lbl-salida"></span></p>
+<p><strong>Hora de Llegada:</strong> <span id="lbl-llegada"></span></p>
+<div class="ticket-media">
+<p>💡 Consulta los horarios oficiales antes de viajar:</p>
+<a href="https://thetrainline.com" target="_blank" style="color: #2a5298; font-weight: bold; text-decoration: underline;">📋 Ver Guía Oficial de Estaciones Ferroviarias</a>
+<br><br>
+<video width="100%" height="240" controls style="border-radius: 6px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); object-fit: cover;">
+<source src="video_tren.mp4" type="video/mp4">
+Tu navegador no soporta la reproducción de este video de forma local.
+</video>
+</div>
+</div>                
+<button id="btn-ir-encuesta" class="btn-success" style="margin-top: 1.5rem; width: 100%;">Continuar a Evaluación de Satisfacción</button>
+</section>
 
-            <!-- Anuncio Flotante Derecho -->
-            <div class="publicidad-flotante pub-der">
-                <span class="pub-tag tag-naranja">ANUNCIO</span>
-                <h4>🎒 Pase Turístico</h4>
-                <p>¡Vuélvete un viajero frecuente con el <strong>Pase Oro VIP</strong> por solo <strong>Q40.00</strong>!</p>
-                <img src="pase.png" alt="Pase VIP" style="width: 100%; height: auto; margin: 0.8rem 0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: block;" onerror="this.src='https://placehold.co'">
-                <button id="btn-add-pase" class="btn-primary" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">🛒 Agregar (+Q40.00)</button>
-            </div>
-        </div>
+<!-- Anuncio Derecho -->
+<div class="publicidad-flotante pub-der">
+<span class="pub-tag tag-naranja">ANUNCIO</span>
+<h4>🎒 Pase Turístico</h4>
+<p>¡Vuélvete un viajero frecuente con el <strong>Pase Oro VIP</strong> por solo <strong>Q40.00</strong>!</p>
+<img src="pase.png" alt="Pase VIP" style="width: 100%; height: auto; margin: 0.8rem 0; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: block;" onerror="this.src='https://placehold.co'">
+<button id="btn-add-pase" class="btn-primary" style="width: 100%; padding: 0.5rem; font-size: 0.85rem;">🛒 Agregar (+Q40.00)</button>
+</div>
+</div>
 
-        <!-- SECCIÓN 3: ENCUESTA DE SATISFACCIÓN -->
-        <section id="section-encuesta" class="card hidden">
-            <h2>📊 Evaluación de Satisfacción del Cliente</h2>
-            <form id="form-encuesta">
-                <div class="survey-group">
-                    <label>1. ¿Cómo califica la puntualidad de nuestros trenes?</label><br>
-                    <input type="radio" name="p1" value="Excelente" required> Excelente
-                    <input type="radio" name="p1" value="Regular"> Regular
-                    <input type="radio" name="p1" value="Malo"> Malo
-                </div>
-                <br>
-                <div class="survey-group">
-                    <label>2. ¿Qué servicios adicionales utilizó? (Seleccione varios)</label><br>
-                    <input type="checkbox" name="p2" value="Wifi"> Wifi a bordo<br>
-                    <input type="checkbox" name="p2" value="Cafeteria"> Cafetería<br>
-                    <input type="checkbox" name="p2" value="Aire"> Aire Acondicionado
-                </div>
-                <br>
-                <div class="survey-group">
-                    <label>3. ¿La limpieza de las instalaciones fue adecuada?</label>
-                    <select name="p3" required>
-                        <option value="Muy Limpio">Muy Limpio</option>
-                        <option value="Aceptable">Aceptable</option>
-                        <option value="Deficiente">Deficiente</option>
-                    </select>
-                </div>
-                <br>
-                <div class="survey-group">
-                    <label>4. ¿La atención del personal fue amable?</label><br>
-                    <input type="radio" name="p4" value="Sí" required> Sí
-                    <input type="radio" name="p4" value="No"> No
-                </div>
-                <br>
-                <div class="survey-group">
-                    <label>5. ¿Recomendaría este servicio de transporte?</label><br>
-                    <input type="checkbox" name="p5" value="Si-Recomienda"> Definitivamente sí
-                </div>
-                <br>
-                <div class="survey-group">
-                    <label>6. Facilidad para adquirir su boleto web:</label>
-                    <select name="p6" required>
-                        <option value="Fácil">Fácil e intuitivo</option>
-                        <option value="Complejo">Un poco confuso</option>
-                    </select>
-                </div>
-                <br>
-                <button type="submit" class="btn-primary" style="width: 100%;">Enviar Evaluación</button>
-            </form>
-        </section>
-        <!-- SECCIÓN 4: RESULTADO Y DIPLOMA -->
-        <section id="section-resultado" class="card hidden">
-            <div class="diploma-container">
-                <h2>🎓 Certificado de Viajero Frecuente</h2>
-                <p>Agradecemos sinceramente sus respuestas. Gracias a su retroalimentación mejoramos el sistema ferroviario.</p>
-                
-                <div class="diploma-box">
-                    <h3>DIPLOMA DE APROBACIÓN</h3>
-                    <p>Otorgado a: <strong id="dip-nombre"></strong></p>
-                    <p>Por completar exitosamente el abordaje y la auditoría de servicio.</p>
-                    <div class="firma">✒️ Dirección General de Ferrocarriles</div>
-                </div>
-            </div>
+<!-- seccion 3: la encuesta de la satisfaccion -->
+<section id="section-encuesta" class="card hidden">
+<h2>📊 Evaluación de Satisfacción del Cliente</h2>
+<form id="form-encuesta">
+<div class="survey-group">
+<label>1. ¿Cómo califica la puntualidad de nuestros trenes?</label><br>
+<input type="radio" name="p1" value="Excelente" required> Excelente
+<input type="radio" name="p1" value="Regular"> Regular
+<input type="radio" name="p1" value="Malo"> Malo
+</div>
+<br>
+<div class="survey-group">
+<label>2. ¿Qué servicios adicionales utilizó? (Seleccione varios)</label><br>
+<input type="checkbox" name="p2" value="Wifi"> Wifi a bordo<br>
+<input type="checkbox" name="p2" value="Cafeteria"> Cafetería<br>
+<input type="checkbox" name="p2" value="Aire"> Aire Acondicionado
+</div>
+<br>
+<div class="survey-group">
+<label>3. ¿La limpieza de las instalaciones fue adecuada?</label>
+<select name="p3" required>
+<option value="Muy Limpio">Muy Limpio</option>
+<option value="Aceptable">Aceptable</option>
+<option value="Deficiente">Deficiente</option>
+</select>
+</div>
+<br>
+<div class="survey-group">
+<label>4. ¿La atención del personal fue amable?</label><br>
+<input type="radio" name="p4" value="Sí" required> Sí
+<input type="radio" name="p4" value="No"> No
+</div>
+<br>
+<div class="survey-group">
+<label>5. ¿Recomendaría este servicio de transporte?</label><br>
+<input type="checkbox" name="p5" value="Si-Recomienda"> Definitivamente sí
+</div>
+<br>
+<div class="survey-group">
+<label>6. Facilidad para adquirir su boleto web:</label>
+<select name="p6" required>
+<option value="Fácil">Fácil e intuitivo</option>
+<option value="Complejo">Un poco confuso</option>
+</select>
+</div>
+<br>
+<button type="submit" class="btn-primary" style="width: 100%;">Enviar Evaluación</button>
+</form>
+</section>
+        
+<!-- seccion 4: los resultados finales y el diploma -->
+<section id="section-resultado" class="card hidden">
+<div class="diploma-container">
+<h2>🎓 Certificado de Viajero Frecuente</h2>
+<p>Agradecemos sinceramente sus respuestas. Gracias a su retroalimentación mejoramos el sistema ferroviario.</p>
+<div class="diploma-box">
+<h3>DIPLOMA DE APROBACIÓN</h3>
+<p>Otorgado a: <strong id="dip-nombre"></strong></p>
+<p>Por completar exitosamente el abordaje y la auditoría de servicio.</p>
+<div class="firma">✒️ Dirección General de Ferrocarriles</div>
+</div>
+</div>
+<div class="no-print" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed #ddd;">
+<h3>🧾 Desglose de Pago Final</h3>
+<div style="background: #f8f9fa; padding: 1.2rem; border-radius: 8px; font-family: monospace; font-size: 1rem; margin-top: 0.5rem;">
+<p style="margin: 0.4rem 0;">Tarifa de Ruta base: <span id="bill-ruta" style="float: right; font-weight: bold;">Q0.00</span></p>
+<p style="margin: 0.4rem 0;">Adicionales de Anuncios: <span id="bill-extra" style="float: right; font-weight: bold;">Q0.00</span></p>
+<hr style="border: 0; border-top: 1px solid #ccc; margin: 0.8rem 0;">
+<p style="margin: 0; font-size: 1.2rem; color: #1e3c72; font-weight: bold;">TOTAL NETO A PAGAR: <span id="bill-total" style="float: right;">Q0.00</span></p>
+</div>
+</div>
+<div class="no-print" style="margin-top: 1.5rem; display: flex; gap: 10px;">
+<button onclick="window.print()" class="btn-secondary">🖨️ Imprimir Diploma</button>
+<button id="btn-volver-inicio" class="btn-primary">🔄 Registrar Otro Pasajero</button>
+</div>
+</section>
 
-            <div class="no-print" style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px dashed #ddd;">
-                <h3>🧾 Desglose de Pago Final</h3>
-                <div style="background: #f8f9fa; padding: 1.2rem; border-radius: 8px; font-family: monospace; font-size: 1rem; margin-top: 0.5rem;">
-                    <p style="margin: 0.4rem 0;">Tarifa de Ruta base: <span id="bill-ruta" style="float: right; font-weight: bold;">Q0.00</span></p>
-                    <p style="margin: 0.4rem 0;">Adicionales de Anuncios: <span id="bill-extra" style="float: right; font-weight: bold;">Q0.00</span></p>
-                    <hr style="border: 0; border-top: 1px solid #ccc; margin: 0.8rem 0;">
-                    <p style="margin: 0; font-size: 1.2rem; color: #1e3c72; font-weight: bold;">TOTAL NETO A PAGAR: <span id="bill-total" style="float: right;">Q0.00</span></p>
-                </div>
-            </div>
+<!-- seccion 5: el panel administrativo -->
+<section id="section-admin" class="card hidden">
+<h2>🔒 Panel de Administración Estación</h2>
+<p>Registros en Base de Datos de Clientes (`localStorage`):</p>
+<div class="table-responsive">
+<table id="tabla-registros">
+<thead>
+<tr>
+<th>Nombre</th>
+<th>Identificación</th>
+<th>Ruta Base</th>
+<th>Adicionales</th>
+<th>Total Pagado</th>
+</tr>
+</thead>
+<tbody>
+                        
+<!-- Filas dinámicas generadas por JS -->
+</tbody>
+</table>
+</div>
+<div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+<button id="btn-limpiar-bd" class="btn-danger">🧹 Limpiar Base de Datos</button>
+<button id="btn-salir-admin" class="btn-secondary">Volver al Inicio</button>
+</div>
+</section>
+</main>
 
-            <div class="no-print" style="margin-top: 1.5rem; display: flex; gap: 10px;">
-                <button onclick="window.print()" class="btn-secondary">🖨️ Imprimir Diploma</button>
-                <button id="btn-volver-inicio" class="btn-primary">🔄 Registrar Otro Pasajero</button>
-            </div>
-        </section>
-
-        <!-- SECCIÓN 5: PANEL ADMINISTRATIVO -->
-        <section id="section-admin" class="card hidden">
-            <h2>🔒 Panel de Administración Estación</h2>
-            <p>Registros en Base de Datos de Clientes (`localStorage`):</p>
-            <div class="table-responsive">
-                <table id="tabla-registros">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Identificación</th>
-                            <th>Ruta Base</th>
-                            <th>Adicionales</th>
-                            <th>Total Pagado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- Filas dinámicas generadas por JS -->
-                    </tbody>
-                </table>
-            </div>
-            <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
-                <button id="btn-limpiar-bd" class="btn-danger">🧹 Limpiar Base de Datos</button>
-                <button id="btn-salir-admin" class="btn-secondary">Volver al Inicio</button>
-            </div>
-        </section>
-    </main>
-
-    <!-- VENTANA MODAL EMERGENTE DE LOGIN -->
-    <div id="modal-login" class="modal hidden">
-        <div class="modal-content">
-            <h3>Iniciar Sesión Administrativa</h3>
-            <form id="form-submit-login">
-                <div class="form-group">
-                    <label>Usuario:</label>
-                    <input type="text" id="login-user" required placeholder="admin">
-                </div>
-                <div class="form-group">
-                    <label>Contraseña:</label>
-                    <input type="password" id="login-pass" required placeholder="••••">
-                </div>
-                <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
-                    <input type="checkbox" id="chk-recordar" style="width: auto;">
-                    <label style="font-weight: normal; margin-bottom: 0; font-size: 0.9rem; cursor: pointer;">Recordar credenciales</label>
-                </div>
-                <div id="wrapper-olvidar" class="hidden" style="text-align: right; margin-bottom: 1rem;">
-                    <a href="#" id="lnk-olvidar" style="font-size: 0.8rem; color: #e74c3c; text-decoration: underline;">Quitar opción de recordar datos</a>
-                </div>
-                <button type="submit" id="btn-submit-login" class="btn-primary" style="width: 100%; margin-bottom: 0.5rem;">Ingresar</button>
-                <button type="button" id="btn-close-modal" class="btn-secondary" style="width: 100%;">Cancelar</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+<!-- Aqui es la ventana modal de emergente de login -->
+<div id="modal-login" class="modal hidden">
+<div class="modal-content">
+<h3>Iniciar Sesión Administrativa</h3>
+<form id="form-submit-login">
+<div class="form-group">
+<label>Usuario:</label>
+<input type="text" id="login-user" required placeholder="admin">
+</div>
+<div class="form-group">
+<label>Contraseña:</label>
+<input type="password" id="login-pass" required placeholder="••••">
+</div>
+<div class="form-group" style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+<input type="checkbox" id="chk-recordar" style="width: auto;">
+<label style="font-weight: normal; margin-bottom: 0; font-size: 0.9rem; cursor: pointer;">Recordar credenciales</label>
+</div>
+<div id="wrapper-olvidar" class="hidden" style="text-align: right; margin-bottom: 1rem;">
+<a href="#" id="lnk-olvidar" style="font-size: 0.8rem; color: #e74c3c; text-decoration: underline;">Quitar opción de recordar datos</a>
+</div>
+<button type="submit" id="btn-submit-login" class="btn-primary" style="width: 100%; margin-bottom: 0.5rem;">Ingresar</button>
+<button type="button" id="btn-close-modal" class="btn-secondary" style="width: 100%;">Cancelar</button>
+</form>
+</div>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
